@@ -11,7 +11,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     height: 60,
     borderWidth: 0.5,
-    borderColor: "black",
+    borderColor: "#a9afba",
     backgroundColor: "#fff",
     padding: 20
   },
