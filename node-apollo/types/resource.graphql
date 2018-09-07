@@ -1,0 +1,6 @@
+# import ResultsObj from "results.graphql"
+
+type Resource {
+    count: Int
+    results: [ResultsObj]
+}

@@ -1,0 +1,17 @@
+type AbilityObj {
+    ability: Ability
+}
+type Ability {
+    name: String
+}
+type StatObj {
+    base_stat: Int
+    stat: Stat
+}
+type Stat {
+    name: String
+}
+type SpriteObj {
+    front_default: String
+}
+

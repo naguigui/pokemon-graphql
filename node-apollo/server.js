@@ -5,7 +5,7 @@ import { ApolloServer } from "apollo-server-express";
 import { importSchema } from "graphql-import";
 import resolvers from "./resolvers";
 
-const typeDefs = importSchema("./types/schema.graphql");
+const typeDefs = importSchema("./types/query.graphql");
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
