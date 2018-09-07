@@ -12,6 +12,7 @@ const typeDefs = `
     height: Int
     abilities: [AbilityObj]
     stats: [StatObj]
+    sprites: SpriteObj
   }
 
   type AbilityObj {
@@ -30,6 +31,11 @@ const typeDefs = `
   type Stat {
     name: String
   }
+
+  type SpriteObj {
+    front_default: String
+  }
+
 `;
 
 const resolvers = {
