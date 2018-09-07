@@ -1,5 +1,7 @@
 # import Resource from "resource.graphql"
+# import Pokemon from "pokemon.graphql"
 
 type Query {
     getAllPokemon: Resource
+    getPokemon(name: String!): Pokemon
 }

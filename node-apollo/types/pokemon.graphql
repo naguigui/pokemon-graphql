@@ -1,3 +1,5 @@
+# import AbilityObj, StatObj, SpriteObj from "pokemonAttributes.graphql"
+
 type Pokemon {
     id: Int
     name: String
