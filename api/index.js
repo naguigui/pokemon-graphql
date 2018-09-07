@@ -3,9 +3,16 @@ const fetch = require("node-fetch");
 
 const typeDefs = `
   type Query {
-    getPokemon(id: Int!): Pokemon
+    getAllPokemon: Resource
+  }
+  type Resource {
+    count: Int
+    results: [ResultsObj]
   }
 
+  type ResultsObj {
+    name: String
+  }
   type Pokemon {
     id: Int
     name: String
@@ -40,8 +47,8 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    getPokemon: async (_, { id }) => {
-      const response = await fetch(`http://pokeapi.co/api/v2/pokemon/${id}`);
+    getAllPokemon: async () => {
+      const response = await fetch(`http://pokeapi.co/api/v2/pokemon?limit=20`);
       return response.json();
     }
   }
