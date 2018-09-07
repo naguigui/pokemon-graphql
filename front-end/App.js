@@ -1,4 +1,6 @@
 import React from "react";
+import { View, Text } from "react-native";
+import { Font } from "expo";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient, HttpLink, InMemoryCache } from "apollo-client-preset";
 import { ApplicationContainer } from "./src/containers";
