@@ -1,4 +1,4 @@
-# import AbilityObj, StatObj, SpriteObj from "pokemonAttributes.graphql"
+# import AbilityObj, StatObj, SpriteObj, TypeObject from "pokemonAttributes.graphql"
 
 type Pokemon {
     id: Int
@@ -7,4 +7,5 @@ type Pokemon {
     abilities: [AbilityObj]
     stats: [StatObj]
     sprites: SpriteObj
+    types: [TypeObject]
 }

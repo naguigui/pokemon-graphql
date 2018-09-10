@@ -14,4 +14,10 @@ type Stat {
 type SpriteObj {
     front_default: String
 }
+type TypeObject {
+    type: Type
+}
+type Type {
+    name: String
+}
 
