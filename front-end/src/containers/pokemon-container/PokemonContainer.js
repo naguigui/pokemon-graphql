@@ -32,6 +32,7 @@ class PokemonContainer extends Component {
                   name={getPokemon.name}
                   image={getPokemon.sprites.front_default}
                   abilities={getPokemon.abilities}
+                  types={getPokemon.types}
                 />
               );
             }
@@ -54,6 +55,11 @@ const GET_SINGLE_POKEMON = gql`
       }
       sprites {
         front_default
+      }
+      types {
+        type {
+          name
+        }
       }
     }
   }

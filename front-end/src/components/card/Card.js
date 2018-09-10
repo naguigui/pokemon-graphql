@@ -4,7 +4,7 @@ import styles from "./CardStyles";
 
 class Card extends Component {
   render() {
-    const { id, name, image, abilities } = this.props;
+    const { id, name, image, abilities, types } = this.props;
     return (
       <View style={styles.card}>
         <View style={styles.wrapper}>
@@ -14,6 +14,11 @@ class Card extends Component {
           {abilities.map((abilities, id) => (
             <Text style={styles.abilities} key={id}>
               {abilities.ability.name}
+            </Text>
+          ))}
+          {types.map((types, id) => (
+            <Text style={styles.abilities} key={id}>
+              {types.type.name}
             </Text>
           ))}
         </View>
