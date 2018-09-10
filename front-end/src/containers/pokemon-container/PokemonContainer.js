@@ -25,11 +25,13 @@ class PokemonContainer extends Component {
               );
             }
             if (getPokemon) {
+              console.log(getPokemon);
               return (
                 <Card
                   id={getPokemon.id}
                   name={getPokemon.name}
                   image={getPokemon.sprites.front_default}
+                  abilities={getPokemon.abilities}
                 />
               );
             }

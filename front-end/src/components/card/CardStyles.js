@@ -9,7 +9,7 @@ export default StyleSheet.create({
   wrapper: {
     height: 250,
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "#3e3e3f",
     alignItems: "center",
     justifyContent: "center"
   },
@@ -19,10 +19,16 @@ export default StyleSheet.create({
   },
   name: {
     fontSize: 16,
-    fontFamily: "Helvetica"
+    fontFamily: "Helvetica",
+    fontWeight: "500",
+    marginBottom: 10
   },
   imageStyle: {
     width: 100,
     height: 100
+  },
+  abilities: {
+    fontSize: 16,
+    fontFamily: "Helvetica"
   }
 });
