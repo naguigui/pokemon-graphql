@@ -7,8 +7,10 @@ export default StyleSheet.create({
     padding: 10
   },
   wrapper: {
+    backgroundColor: "#fff",
     height: 250,
     borderWidth: 1,
+    borderRadius: 6,
     borderColor: "#3e3e3f",
     alignItems: "center",
     justifyContent: "center"
