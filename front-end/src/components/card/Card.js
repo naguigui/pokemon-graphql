@@ -1,28 +1,44 @@
 import React, { Component } from "react";
-import { View, Text, Image } from "react-native";
-import styles from "./CardStyles";
+import {
+  CardContainer,
+  CardWrapper,
+  CardIdText,
+  CardNameText,
+  CardAbilitiesText,
+  CardSpriteImage
+} from "./Card.styled";
 
 class Card extends Component {
+  renderAbilities = () => {
+    const { abilities } = this.props;
+    return abilities.map((abilities, id) => (
+      <CardAbilitiesText style={styles.abilities} key={id}>
+        {abilities.ability.name}
+      </CardAbilitiesText>
+    ));
+  };
+
+  renderTypes = () => {
+    const { types } = this.props;
+    return types.map((types, id) => (
+      <CardAbilitiesText style={styles.abilities} key={id}>
+        {types.type.name}
+      </CardAbilitiesText>
+    ));
+  };
+
   render() {
-    const { id, name, image, abilities, types } = this.props;
+    const { id, name, image } = this.props;
     return (
-      <View style={styles.card}>
-        <View style={styles.wrapper}>
-          <Text style={styles.id}>{`#${id}`}</Text>
-          <Image style={styles.imageStyle} source={{ uri: image }} />
-          <Text style={styles.name}>{name}</Text>
-          {abilities.map((abilities, id) => (
-            <Text style={styles.abilities} key={id}>
-              {abilities.ability.name}
-            </Text>
-          ))}
-          {types.map((types, id) => (
-            <Text style={styles.abilities} key={id}>
-              {types.type.name}
-            </Text>
-          ))}
-        </View>
-      </View>
+      <CardContainer>
+        <CardWrapper>
+          <CardIdText style={styles.id}>{`#${id}`}</CardIdText>
+          <CardSpriteImage style={styles.imageStyle} source={{ uri: image }} />
+          <CardNameText style={styles.name}>{name}</CardNameText>
+          {this.renderAbilities()}
+          {this.renderTypes()}
+        </CardWrapper>
+      </CardContainer>
     );
   }
 }
