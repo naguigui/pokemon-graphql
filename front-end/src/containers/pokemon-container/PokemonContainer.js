@@ -1,68 +1,48 @@
-import React, { Component } from "react";
-import { View, ActivityIndicator, Text, Image } from "react-native";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
+import React from "react";
+import { View, Text, ActivityIndicator } from "react-native";
 import { Card } from "../../components";
+import { GetPokemon } from "./graphql/pokemon.container.query";
 import styles from "./PokemonContainerStyles";
 
-class PokemonContainer extends Component {
-  getName = () => {
-    const { navigation } = this.props;
-    return navigation.state.params.title;
-  };
-  render() {
-    const name = this.getName();
-    return (
-      <View style={styles.PokemonContainerStyles}>
-        <Query query={GET_SINGLE_POKEMON} variables={{ name }}>
-          {({ loading, data }) => {
-            const { getPokemon } = data;
-            if (loading) {
-              return (
-                <View style={styles.loading}>
-                  <ActivityIndicator size="large" color="#FF0000" />
-                </View>
-              );
-            }
-            if (getPokemon) {
-              console.log(getPokemon);
-              return (
-                <Card
-                  id={getPokemon.id}
-                  name={getPokemon.name}
-                  image={getPokemon.sprites.front_default}
-                  abilities={getPokemon.abilities}
-                  types={getPokemon.types}
-                />
-              );
-            }
-          }}
-        </Query>
-      </View>
-    );
-  }
-}
+const LOADING_COLOR = "#fff";
+const LOADING_SIZE = "large";
 
-const GET_SINGLE_POKEMON = gql`
-  query getPokemon($name: String!) {
-    getPokemon(name: $name) {
-      name
-      id
-      abilities {
-        ability {
-          name
-        }
-      }
-      sprites {
-        front_default
-      }
-      types {
-        type {
-          name
-        }
-      }
-    }
-  }
-`;
+const PokemonContainer = props => {
+  const { data } = props;
+  const { getPokemon } = data;
+  return (
+    <React.Fragment>
+      {getPokemon && (
+        <Card
+          id={getPokemon.id}
+          name={getPokemon.name}
+          image={getPokemon.sprites.front_default}
+          abilities={getPokemon.abilities}
+          types={getPokemon.types}
+        />
+      )}
+    </React.Fragment>
+  );
+};
 
-export default PokemonContainer;
+const PokemonContainerWithQuery = props => {
+  return (
+    <GetPokemon props={props}>
+      {({ data, loading, error }) => {
+        return (
+          <View style={styles.PokemonContainerStyles}>
+            {!loading && !error && data && (
+              <PokemonContainer {...props} data={data} />
+            )}
+            {loading && !error && (
+              <ActivityIndicator size={LOADING_SIZE} color={LOADING_COLOR} />
+            )}
+            {!loading && error && <Text>Oh noes we have an errors!</Text>}
+          </View>
+        );
+      }}
+    </GetPokemon>
+  );
+};
+
+export default PokemonContainerWithQuery;
