@@ -1,3 +1,11 @@
 # pokemon-graphql
 
-Fun project that uses graphql to catch (fetch) some pokemons!
+This was a project to demonstrate how Apollo Client / React-Apollo works.
+
+Technologies / Libraries Used:
+
+```
+Apollo Client
+React Apollo
+Styled-components
+```

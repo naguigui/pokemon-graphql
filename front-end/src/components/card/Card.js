@@ -12,18 +12,14 @@ class Card extends Component {
   renderAbilities = () => {
     const { abilities } = this.props;
     return abilities.map((abilities, id) => (
-      <CardAbilitiesText style={styles.abilities} key={id}>
-        {abilities.ability.name}
-      </CardAbilitiesText>
+      <CardAbilitiesText key={id}>{abilities.ability.name}</CardAbilitiesText>
     ));
   };
 
   renderTypes = () => {
     const { types } = this.props;
     return types.map((types, id) => (
-      <CardAbilitiesText style={styles.abilities} key={id}>
-        {types.type.name}
-      </CardAbilitiesText>
+      <CardAbilitiesText key={id}>{types.type.name}</CardAbilitiesText>
     ));
   };
 
@@ -32,9 +28,9 @@ class Card extends Component {
     return (
       <CardContainer>
         <CardWrapper>
-          <CardIdText style={styles.id}>{`#${id}`}</CardIdText>
-          <CardSpriteImage style={styles.imageStyle} source={{ uri: image }} />
-          <CardNameText style={styles.name}>{name}</CardNameText>
+          <CardIdText>{`#${id}`}</CardIdText>
+          <CardSpriteImage source={{ uri: image }} />
+          <CardNameText>{name}</CardNameText>
           {this.renderAbilities()}
           {this.renderTypes()}
         </CardWrapper>

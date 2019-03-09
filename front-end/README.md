@@ -1,8 +1,12 @@
+# Client Side
 
+## Requirements
 
-## Client Side (React Native)
+Requires Xcode for iOS Simulator or any Android Emulator.
 
-Make sure you have Expo and the simulator/emulator installed!
+## Commands
 
-- npm i 
-- npm start
+Here are the commands to do common actions:
+
+- Installation: `npm install`
+- Running the application: `npm start`
