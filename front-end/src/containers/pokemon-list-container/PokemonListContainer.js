@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { View, ActivityIndicator } from "react-native";
+import { ActivityIndicator } from "react-native";
 import { List, ListItem } from "../../components";
 import { GetAllPokemons } from "./graphql/pokemon.list.container.query";
-import styles from "./PokemonListContainerStyles";
+import {
+  PokemonListContainerWrapper,
+  PokemonListLoadingWrapper
+} from "./PokemonListContainerStyled";
 
 const LOADING_COLOR = "#fff";
 const LOADING_SIZE = "large";
@@ -32,12 +35,14 @@ const PokemonListContainerWithQuery = props => {
     <GetAllPokemons>
       {({ data, loading, error }) => {
         return (
-          <View style={styles.PokemonListContainerStyles}>
+          <PokemonListContainerWrapper>
             {!loading && !error && data && <PokemonListContainer data={data} />}
             {loading && !error && (
-              <ActivityIndicator size={LOADING_SIZE} color={LOADING_COLOR} />
+              <PokemonListLoadingWrapper>
+                <ActivityIndicator size={LOADING_SIZE} color={LOADING_COLOR} />
+              </PokemonListLoadingWrapper>
             )}
-          </View>
+          </PokemonListContainerWrapper>
         );
       }}
     </GetAllPokemons>
