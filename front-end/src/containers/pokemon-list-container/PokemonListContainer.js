@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-import { ActivityIndicator } from "react-native";
-import { List, ListItem } from "../../components";
+import { List, ListItem, LoadingSpinner } from "../../components";
 import { GetAllPokemons } from "./graphql/pokemon.list.container.query";
 import {
   PokemonListContainerWrapper,
   PokemonListLoadingWrapper
 } from "./PokemonListContainerStyled";
 
-const LOADING_COLOR = "#fff";
-const LOADING_SIZE = "large";
 class PokemonListContainer extends Component {
   createList = ({ item }) => {
     return <ListItem name={item.name} path="Pokemon" />;
@@ -39,7 +36,7 @@ const PokemonListContainerWithQuery = props => {
             {!loading && !error && data && <PokemonListContainer data={data} />}
             {loading && !error && (
               <PokemonListLoadingWrapper>
-                <ActivityIndicator size={LOADING_SIZE} color={LOADING_COLOR} />
+                <LoadingSpinner />
               </PokemonListLoadingWrapper>
             )}
           </PokemonListContainerWrapper>
